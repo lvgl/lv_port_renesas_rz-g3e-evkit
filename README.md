@@ -77,7 +77,8 @@ in this repo which is from
 https://www.renesas.com/en/design-resources/boards-kits/rz-g3e-evkit#documents.
 It is a detailed guide for obtaining the OS image, flashing the Micro SD card, and
 flashing the board's bootloader into its ROM.
-This repo contains a copy of the prebuilt OS images ZIP file.
+This GitHub repo contains a copy of the prebuilt OS images ZIP file in the
+[Releases](https://github.com/lvgl/lv_port_renesas_rz-g3e-evkit/releases) artifacts.
 Flashing the bootloader is a bit complex
 so follow the directions carefully. The guide says to use Tera Term to send files over
 serial to the board. Tera Term is a Windows application. If you are using Linux, you can send
@@ -88,7 +89,9 @@ terminal.
 
 You need an SDK to cross-compile applications to run on the board. When you compile an OS
 image locally with Yocto, it also produces an SDK. To save you the time needed to build Yocto,
-an SDK is included in this repo. It's for x86-64 architecture systems, so you will need to use an
+an SDK is included in the GitHub repo's
+[Releases](https://github.com/lvgl/lv_port_renesas_rz-g3e-evkit/releases) artifacts.
+It's for x86-64 architecture systems, so you will need to use an
 x86-64 emulator to run it if your development PC is x86-32 or ARM based. Docker has support for emulation.
 Unzip sdk.zip and execute the shell script
 rz-vlp-glibc-x86_64-core-image-weston-cortexa55-smarc-rzg3e-toolchain-5.0.8.sh.
