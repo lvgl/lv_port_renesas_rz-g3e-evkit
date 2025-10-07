@@ -6,7 +6,7 @@ if(CCACHE_PROGRAM)
     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
 endif()
 
-project(lv_port_f_and_s_picocoremx93)
+project(lv_port_renesas_rz_g3e_evkit)
 
 set(LV_BUILD_CONF_PATH ${CMAKE_CURRENT_LIST_DIR}/lv_conf.h CACHE PATH
     "Use this to specify the location of and/or filename of lv_conf.h" FORCE)
