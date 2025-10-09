@@ -16,27 +16,28 @@ You can purchase RZ/G3E-EVKIT from https://www.renesas.com/en/design-resources/b
     <img src="https://github.com/user-attachments/assets/87c1f2e5-0260-4772-b711-13fdab467474" width="75%">
 </a> -->
 
-Here are the results of the benchmark with single-threaded Wayland.
+Here are the results of the benchmark with single-threaded software rendering to an OpenGLES EGL display,
+with a 16 ms refresh period (60 FPS target).
 
 | Name                      | Avg. CPU | Avg. FPS | Avg. time | render time | flush time |
 | :------------------------ | -------: | -------: | --------: | ----------: | ---------: |
-| Empty screen              | 74%      | 21       | 36        | 1           | 35         |
-| Moving wallpaper          | 99%      | 19       | 48        | 4           | 44         |
-| Single rectangle          | 27%      | 29       | 3         | 0           | 3          |
-| Multiple rectangles       | 61%      | 29       | 21        | 0           | 21         |
-| Multiple RGB images       | 96%      | 21       | 43        | 2           | 41         |
-| Multiple ARGB images      | 99%      | 19       | 47        | 6           | 41         |
-| Rotated ARGB images       | 99%      | 16       | 57        | 18          | 39         |
-| Multiple labels           | 99%      | 20       | 47        | 7           | 40         |
-| Screen sized text         | 99%      | 14       | 64        | 24          | 40         |
-| Multiple arcs             | 99%      | 19       | 47        | 8           | 39         |
-| Containers                | 90%      | 23       | 38        | 10          | 28         |
-| Containers with overlay   | 99%      | 13       | 72        | 33          | 39         |
-| Containers with opa       | 99%      | 14       | 64        | 24          | 40         |
-| Containers with opa_layer | 99%      | 12       | 74        | 34          | 40         |
-| Containers with scrolling | 99%      | 18       | 51        | 15          | 36         |
-| Widgets demo              | 37%      | 24       | 23        | 8           | 15         |
-| All scenes avg.           | 85%      | 19       | 45        | 12          | 33         |
+| Empty screen              | 10%      | 55       | 7         | 0           | 7          |
+| Moving wallpaper          | 24%      | 61       | 10        | 3           | 7          |
+| Single rectangle          | 7%       | 61       | 7         | 0           | 7          |
+| Multiple rectangles       | 10%      | 61       | 8         | 1           | 7          |
+| Multiple RGB images       | 18%      | 61       | 8         | 1           | 7          |
+| Multiple ARGB images      | 29%      | 61       | 11        | 4           | 7          |
+| Rotated ARGB images       | 26%      | 55       | 16        | 9           | 7          |
+| Multiple labels           | 24%      | 61       | 10        | 3           | 7          |
+| Screen sized text         | 42%      | 61       | 13        | 6           | 7          |
+| Multiple arcs             | 28%      | 61       | 10        | 3           | 7          |
+| Containers                | 16%      | 61       | 9         | 2           | 7          |
+| Containers with overlay   | 48%      | 55       | 16        | 9           | 7          |
+| Containers with opa       | 18%      | 61       | 11        | 4           | 7          |
+| Containers with opa_layer | 21%      | 57       | 14        | 7           | 7          |
+| Containers with scrolling | 39%      | 61       | 13        | 6           | 7          |
+| Widgets demo              | 18%      | 58       | 10        | 3           | 7          |
+| All scenes avg.           | 23%      | 59       | 10        | 3           | 7          |
 
 ## Specification
 
@@ -120,8 +121,16 @@ will be able to run on the board.
 - The executable is at `build/bin/lvglsim`. Copy it to the board. If ethernet is connected,
   you can do it with `scp build/bin/lvglsim root@<board ip>:/root/` where `<board ip>` is
   the IP address of the board which you find by running `ip a` on the board serial terminal.
-- Run `./lvglsim` on the serial terminal of the board. You can set the size of the LVGL
-  Wayland window by giving `-W` and `-H` arguments. E.g. `./lvglsim -W 1920 -H 1080`.
+- In the serial terminal of the board, stop the Wayland desktop, weston,
+  so EGL can run directly on the display through DRM.
+  Run `systemctl stop weston weston.socket` to stop weston and the weston socket.
+- Run `./lvglsim` to start the app.
+
+You can disable `LV_USE_OPENGLES` and `LV_USE_LINUX_DRM`, and then enable `LV_USE_WAYLAND`
+to use LVGL on the Wayland dekstop. You can give `-W` and `-H` arguments to `lvglsim`
+to change the window size. E.g. `./lvglsim -W 1920 -H 1080`. This project uses OpenGLES EGL
+by default since it was found to have the best flushing performance, especially when
+the refresh period is 16 ms (60 FPS target).
 
 ### Debugging
 
