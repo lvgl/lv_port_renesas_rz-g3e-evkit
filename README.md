@@ -16,7 +16,7 @@ You can purchase RZ/G3E-EVKIT from https://www.renesas.com/en/design-resources/b
     <img src="https://github.com/user-attachments/assets/87c1f2e5-0260-4772-b711-13fdab467474" width="75%">
 </a> -->
 
-Here are the results of the benchmark with single-threaded software rendering to an OpenGLES EGL display,
+Here are the results of the benchmark with multi-threaded software rendering to an OpenGLES EGL display,
 with a 16 ms refresh period (60 FPS target).
 
 | Name                      | Avg. CPU | Avg. FPS | Avg. time | render time | flush time |
