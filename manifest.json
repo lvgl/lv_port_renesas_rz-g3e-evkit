@@ -29,7 +29,7 @@
         "https://www.renesas.com/en/design-resources/boards-kits/rz-g3e-evkit"
     ],
     "branches": [
-        "release/v9.3"
+        "release/v9.4"
     ],
     "getStartedInstructions": "Follow the guide in the [README](https://github.com/lvgl/lv_port_renesas_rz-g3e-evkit#getting-started)",
     "settings": []
