@@ -10,11 +10,13 @@ applications in mind for use with GStreamer and electrical current measurement.
 
 You can purchase RZ/G3E-EVKIT from https://www.renesas.com/en/design-resources/boards-kits/rz-g3e-evkit
 
-## Benchmark
+## Video
 
-<!-- <a href="https://www.youtube.com/watch?v=XXXXXXXXXXXXXXXXXXXXXXX">
-    <img src="https://github.com/user-attachments/assets/87c1f2e5-0260-4772-b711-13fdab467474" width="75%">
-</a> -->
+<a href="https://www.youtube.com/watch?v=0vzvV9nKW4Q">
+    <img src="https://github.com/user-attachments/assets/7b16be1b-5452-4482-a757-99336d641266" width="75%">
+</a>
+
+## Benchmark
 
 Here are the results of the benchmark with multi-threaded software rendering to an OpenGLES EGL display,
 with a 16 ms refresh period (60 FPS target).
